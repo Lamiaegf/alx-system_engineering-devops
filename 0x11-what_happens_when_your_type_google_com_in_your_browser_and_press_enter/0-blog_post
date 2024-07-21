@@ -1,0 +1,78 @@
+https://medium.com/@mohsade2000/what-happens-when-you-type-https-www-google-com-in-your-browser-and-press-enter-b1af36f5d070
+
+
+
+
+
+# What Happens When You Type `https://www.google.com` in Your Browser and Press Enter
+
+## DNS Request
+
+1. **Browser Cache:** 
+    - The browser first checks its cache to see if it has recently resolved the DNS for `www.google.com`.
+2. **Operating System Cache:** 
+    - If not found, the browser asks the operating system, which also has a cache.
+3. **Router Cache:** 
+    - If still not found, the request goes to the router, which might have its own DNS cache.
+4. **ISP DNS Servers:** 
+    - The router forwards the request to the ISP’s DNS servers.
+5. **Recursive DNS Resolution:** 
+    - If the ISP’s DNS servers don’t have the record, they perform recursive DNS resolution, querying other DNS servers on the internet.
+6. **Authoritative DNS Servers:** 
+    - The request finally reaches the authoritative DNS servers for `google.com`, which respond with the IP address.
+
+## TCP/IP
+
+1. **Three-Way Handshake:** 
+    - The browser establishes a TCP connection with the server using a three-way handshake process (SYN, SYN-ACK, ACK).
+2. **Port Number:** 
+    - The connection is established on port 443 for HTTPS.
+
+## Firewall
+
+1. **Outbound Traffic:** 
+    - The request passes through the local firewall on the client’s machine, which allows outbound traffic.
+2. **Network Firewalls:** 
+    - It may pass through other firewalls within the network or ISP, which also permit outbound traffic.
+3. **Inbound Traffic:** 
+    - The server’s firewall checks and allows incoming requests on port 443.
+
+## HTTPS/SSL
+
+1. **SSL Handshake:** 
+    - The browser and server perform an SSL handshake to establish a secure connection.
+2. **Certificate Exchange:** 
+    - The server presents its SSL certificate to the browser.
+3. **Symmetric Encryption:** 
+    - After the handshake, both parties use symmetric encryption for data transfer.
+
+## Load-balancer
+
+1. **Request Distribution:** 
+    - The request reaches a load balancer, which distributes it to one of several backend servers.
+2. **Algorithms:** 
+    - The load balancer may use algorithms like round-robin, least connections, or IP hash to determine which server should handle the request.
+
+## Web Server
+
+1. **Request Handling:** 
+    - The web server (e.g., Nginx, Apache) receives the request and processes it.
+2. **Static Content:** 
+    - If the request is for static content (e.g., HTML, CSS, images), the web server directly serves the content.
+3. **Dynamic Content:** 
+    - If the request is for dynamic content, the web server forwards it to an application server.
+
+## Application Server
+
+1. **Request Processing:** 
+    - The application server (e.g., Node.js, Django) processes the request, often involving business logic and data retrieval.
+2. **APIs and Services:** 
+    - It may call various APIs or microservices to fulfill the request.
+
+## Database
+
+1. **Data Retrieval:** 
+    - The application server queries the database (e.g., MySQL, MongoDB) to retrieve or store data as needed.
+2. **Response Construction:** 
+    - The application server constructs a response using the retrieved data and sends it back to the web server.
+
